@@ -234,7 +234,7 @@ print(user_types)
 assert len(user_types) == 582, "TAREFA 10: Comprimento errado de start stations."
 # -----------------------------------------------------
 
-input("Aperte Enter para continuar...")
+# input("Aperte Enter para continuar...") # input desnecessário, pois ficava duplicado no terminal (juntamente com o próximo) 
 # TAREFA 11
 # Volte e tenha certeza que você documenteou suas funções. Explique os parâmetros de entrada, a saída, e o que a função faz. Exemplo:
 # def new_function(param1: int, param2: str) -> list:
@@ -253,11 +253,18 @@ input("Aperte Enter para continuar...")
 # TODO: Crie uma função para contar tipos de usuários, sem definir os tipos
 # para que nós possamos usar essa função com outra categoria de dados.
 print("Você vai encarar o desafio? (yes ou no)")
-answer = "no"
+answer = "yes"
 
 def count_items(column_list):
-    item_types = []
-    count_items = []
+    """
+    Função genérica para contar tipos de usuários, sem definir os tipos.
+    Argumentos:
+        column_list: amostra de dados (coluna específica do data_list)
+    Retorna:
+        Quantidade uma lista com os tipos e outra com as respectivas quantidades de cada item.
+    """
+    item_types = [item_type for item_type in set(column_list)]
+    count_items = [column_list.count(item_types[item]) for item in range(len(item_types))]
     return item_types, count_items
 
 
