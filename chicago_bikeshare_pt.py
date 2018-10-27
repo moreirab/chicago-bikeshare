@@ -277,3 +277,15 @@ if answer == "yes":
     assert len(types) == 3, "TAREFA 11: Há 3 tipos de gênero!"
     assert sum(counts) == 1551505, "TAREFA 11: Resultado de retorno incorreto!"
     # -----------------------------------------------------
+
+# Gráfico que exibe a quantidade de partidas de acordo com a estação
+start_station_list = column_to_list(data_list, 3)
+types, quantity = count_items(start_station_list)
+y_pos = list(range(len(types)))
+plt.bar(y_pos, quantity)
+plt.ylabel('Quantidade')
+plt.xlabel('Estação de partida')
+plt.xticks(y_pos, types)
+plt.title('Quantidade por estação de partida')
+plt.savefig("resources/start_stations_hist.png") # essa linha deve ficar antes do show(), ou então poderá resultar em um histograma vazio
+plt.show(block=True)
