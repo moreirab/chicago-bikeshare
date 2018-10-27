@@ -167,7 +167,7 @@ input("Aperte Enter para continuar...")
 print("\nTAREFA 7: Verifique o gráfico!")
 user_types_list = column_to_list(data_list, -3)
 types = ["Subscriber", "Customer"]
-quantity = count_gender(data_list)
+quantity = [user_types_list.count(types[0]), user_types_list.count(types[1])]
 y_pos = list(range(len(types)))
 plt.bar(y_pos, quantity)
 plt.ylabel('Quantidade')
