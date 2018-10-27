@@ -161,7 +161,9 @@ input("Aperte Enter para continuar...")
 male, female = count_gender(data_list)
 print("\nTAREFA 8: Por que a condição a seguir é Falsa?")
 print("male + female == len(data_list):", male + female == len(data_list))
-answer = "Escreva sua resposta aqui."
+# Obtém e imprime a quantidade de itens vazios/não informados na lista.
+itens_vazios = str(column_to_list(data_list, -2).count(""))
+answer = "Pois existem " + itens_vazios + " itens vazios/não informados."
 print("resposta:", answer)
 
 # ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
