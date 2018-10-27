@@ -175,12 +175,18 @@ input("Aperte Enter para continuar...")
 # TAREFA 9
 # TODO: Ache a duração de viagem Mínima, Máxima, Média, e Mediana.
 # Você não deve usar funções prontas parTODO isso, como max() e min().
-trip_duration_list = column_to_list(data_list, 2)
-min_trip = 0.
-max_trip = 0.
-mean_trip = 0.
-median_trip = 0.
-
+# A resolução dessa tarefa (para ser mais específico, no cálculo da mediana) teve como referência a seguinte resposta (https://stackoverflow.com/a/26347340/8463733) no Stackoverflow
+trip_duration_list = [int(item) for item in column_to_list(data_list, 2)]
+list_len = len(trip_duration_list)
+mid = list_len//2 
+sorted_trip_duration_list = sorted(trip_duration_list)
+min_trip = sorted_trip_duration_list[0]
+max_trip = sorted_trip_duration_list[-1]
+mean_trip = sum(trip_duration_list)/len(trip_duration_list)
+if list_len % 2:
+    median_trip = sorted_trip_duration_list[mid]
+else:
+    median_trip = (sorted_trip_duration_list[mid] + sorted_trip_duration_list[mid -1]) / 2
 
 print("\nTAREFA 9: Imprimindo o mínimo, máximo, média, e mediana")
 print("Min: ", min_trip, "Max: ", max_trip, "Média: ", mean_trip, "Mediana: ", median_trip)
