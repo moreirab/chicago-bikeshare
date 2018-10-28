@@ -80,8 +80,14 @@ input("Aperte Enter para continuar...")
 # Agora sabemos como acessar as features, vamos contar quantos Male (Masculinos) e Female (Femininos) o dataset tem
 # TAREFA 4
 # TODO: Conte cada gênero. Você não deveria usar uma função parTODO isso.
-male = column_to_list(data_list, -2).count("Male")
-female = column_to_list(data_list, -2).count("Female")
+genders_list = column_to_list(data_list, -2)
+male = 0
+female = 0
+for gender in genders_list:
+    if gender == "Male":
+        male += 1
+    elif gender == "Female":
+        female += 1
 
 # Verificando o resultado
 print("\nTAREFA 4: Imprimindo quantos masculinos e femininos nós encontramos")
@@ -104,8 +110,14 @@ def count_gender(data_list):
     Retorna:
         Um vetor contendo as quantidades de usuários do gênero masculino e feminino, respectivamente.
     """
-    male = column_to_list(data_list, -2).count("Male")
-    female = column_to_list(data_list, -2).count("Female")
+    genders_list = column_to_list(data_list, -2)
+    male = 0
+    female = 0
+    for gender in genders_list:
+        if gender == "Male":
+            male += 1
+        elif gender == "Female":
+            female += 1
     return [male, female]
 
 
@@ -161,21 +173,6 @@ plt.xticks(y_pos, types)
 plt.title('Quantidade por Gênero')
 plt.show(block=True)
 
-input("Aperte Enter para continuar...")
-# TAREFA 7
-# TODO: Crie um gráfico similar para user_types. Tenha certeza que a legenda está correta.
-print("\nTAREFA 7: Verifique o gráfico!")
-user_types_list = column_to_list(data_list, -3)
-types = ["Subscriber", "Customer"]
-quantity = [user_types_list.count(types[0]), user_types_list.count(types[1])]
-y_pos = list(range(len(types)))
-plt.bar(y_pos, quantity)
-plt.ylabel('Quantidade')
-plt.xlabel('Tipo de usuário')
-plt.xticks(y_pos, types)
-plt.title('Quantidade por tipo de usuário')
-plt.show(block=True)
-
 
 input("Aperte Enter para continuar...")
 # TAREFA 8
@@ -201,10 +198,13 @@ input("Aperte Enter para continuar...")
 trip_duration_list = [int(item) for item in column_to_list(data_list, 2)]
 list_len = len(trip_duration_list)
 mid = list_len//2 
+duration_sum = 0
+for trip_duration in trip_duration_list:
+    duration_sum += trip_duration
 sorted_trip_duration_list = sorted(trip_duration_list)
 min_trip = sorted_trip_duration_list[0]
 max_trip = sorted_trip_duration_list[-1]
-mean_trip = sum(trip_duration_list)/len(trip_duration_list)
+mean_trip = duration_sum/len(trip_duration_list)
 if list_len % 2:
     median_trip = sorted_trip_duration_list[mid]
 else:
@@ -267,6 +267,19 @@ def count_items(column_list):
     count_items = [column_list.count(item_types[item]) for item in range(len(item_types))]
     return item_types, count_items
 
+input("Aperte Enter para continuar...")
+# TAREFA 7
+# TODO: Crie um gráfico similar para user_types. Tenha certeza que a legenda está correta.
+print("\nTAREFA 7: Verifique o gráfico!")
+user_types_list = column_to_list(data_list, -3)
+types, quantity = count_items(user_types_list)
+y_pos = list(range(len(types)))
+plt.bar(y_pos, quantity)
+plt.ylabel('Quantidade')
+plt.xlabel('Tipo de usuário')
+plt.xticks(y_pos, types)
+plt.title('Quantidade por tipo de usuário')
+plt.show(block=True)
 
 if answer == "yes":
     # ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
