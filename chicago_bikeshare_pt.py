@@ -171,7 +171,7 @@ plt.ylabel('Quantidade')
 plt.xlabel('Gênero')
 plt.xticks(y_pos, types)
 plt.title('Quantidade por Gênero')
-plt.show(block=True)
+#plt.show(block=True)
 
 
 input("Aperte Enter para continuar...")
@@ -255,6 +255,21 @@ input("Aperte Enter para continuar...")
 print("Você vai encarar o desafio? (yes ou no)")
 answer = "yes"
 
+def count_occurs(column_list, item):
+    """
+    Função que conta a quantidade de ocorrências de determinado item em uma lista.
+    Argumentos:
+        column_list: amostra de dados (coluna específica do data_list)
+        item: item que será contado
+    Retorna:
+        Quantidade de ocorrências encontradas na lista.
+    """ 
+    occurs = 0
+    for index in range(len(column_list)):
+        if item == column_list[index]:
+            occurs += 1
+    return occurs
+
 def count_items(column_list):
     """
     Função genérica para contar tipos de usuários, sem definir os tipos.
@@ -264,7 +279,7 @@ def count_items(column_list):
         Quantidade uma lista com os tipos e outra com as respectivas quantidades de cada item.
     """
     item_types = [item_type for item_type in set(column_list)]
-    count_items = [column_list.count(item_types[item]) for item in range(len(item_types))]
+    count_items = [count_occurs(column_list, item_types[item]) for item in range(len(item_types))]
     return item_types, count_items
 
 input("Aperte Enter para continuar...")
