@@ -171,7 +171,7 @@ plt.ylabel('Quantidade')
 plt.xlabel('Gênero')
 plt.xticks(y_pos, types)
 plt.title('Quantidade por Gênero')
-#plt.show(block=True)
+plt.show(block=True)
 
 
 input("Aperte Enter para continuar...")
